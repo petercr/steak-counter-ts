@@ -10,6 +10,19 @@ interface Streak {
 }
 
 export function streakCounter(storage: Storage, date: Date): Streak {
+  const streakInLocalStorage = storage.getItem(KEY);
+  const doesStreakExist =
+    streakInLocalStorage !== null && streakInLocalStorage !== "";
+
+  if (doesStreakExist) {
+    try {
+      const streak = JSON.parse(streakInLocalStorage || "");
+      return streak;
+    } catch (error) {
+      console.error("Failed to parse streak from localStorage", error);
+    }
+  }
+
   const streak = {
     currentCount: 1,
     startDate: formattedDate(date),
