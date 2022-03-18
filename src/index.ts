@@ -18,7 +18,7 @@ function assertStreakExists(
 function shouldIncrementOrRestStreakCount(
   currentDate: Date,
   lastLoginDate: string
-): "increment" | undefined {
+): "increment" | "reset" {
   // Get the current date as a string, minus the date from lastLoginDate
   // split the results of lastLoginDate and take just the date
   const difference =
@@ -29,7 +29,7 @@ function shouldIncrementOrRestStreakCount(
   }
 
   // the streak has ended
-  return undefined;
+  return "reset";
 }
 
 export function streakCounter(storage: Storage, date: Date): Streak {
@@ -42,11 +42,24 @@ export function streakCounter(storage: Storage, date: Date): Streak {
         streak.lastLoginDate
       );
       const SHOULD_INCREMENT = state === "increment";
+      const SHOULD_RESET = state === "reset";
 
       if (SHOULD_INCREMENT) {
         const updatedStreak: Streak = {
           ...streak,
           currentCount: streak.currentCount + 1,
+          lastLoginDate: formattedDate(date),
+        };
+        // store in local storage
+        storage.setItem(KEY, JSON.stringify(updatedStreak));
+
+        return updatedStreak;
+      }
+      if (SHOULD_RESET) {
+        const updatedStreak: Streak = {
+          ...streak,
+          currentCount: 1,
+          startDate: formattedDate(date),
           lastLoginDate: formattedDate(date),
         };
         // store in local storage
