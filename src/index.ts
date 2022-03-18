@@ -18,12 +18,17 @@ function assertStreakExists(
 function shouldIncrementOrRestStreakCount(
   currentDate: Date,
   lastLoginDate: string
-): "increment" | "reset" {
+): "increment" | "reset" | "none" {
   // Get the current date as a string, minus the date from lastLoginDate
   // split the results of lastLoginDate and take just the date
   const difference =
     currentDate.getDate() - parseInt(lastLoginDate.split("/")[1]);
 
+  // Same day login, do nothing
+  if (difference === 0) {
+    return "none";
+  }
+  // Logged in on the next day, increment the streak
   if (difference === 1) {
     return "increment";
   }
