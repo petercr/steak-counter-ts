@@ -58,7 +58,7 @@ describe("Streak Counter", () => {
 
       // Use date in past so it doesn't
       // conflict if test uses date test runs.
-      const date = new Date("2021-12-12");
+      const date = new Date("2021/12/12");
 
       const streak = {
         currentCount: 1,
@@ -85,14 +85,14 @@ describe("Streak Counter", () => {
       expect(streak.currentCount).toBe(2);
     });
     it("should not increment the streak if not concurrent login days", () => {
-      const date = new Date("12-14-2021");
+      const date = new Date("12/14/2021");
       const streak = streakCounter(mockLocalStorage, date);
 
       expect(streak.currentCount).toBe(1);
     });
     it("should increment the streak in localStorage", () => {
       const key = "streak";
-      const date = new Date("2021-12-13");
+      const date = new Date("2021/12/13");
       // Call it once so it updates the streak
       streakCounter(mockLocalStorage, date);
 
