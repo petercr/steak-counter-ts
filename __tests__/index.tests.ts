@@ -79,7 +79,7 @@ describe("Streak Counter", () => {
       expect(streak.startDate).toBe("12/11/2021");
     });
     it("it should increment the streak", () => {
-      const date = new Date("12/12/2021");
+      const date = new Date("12/13/2021");
       const streak = streakCounter(mockLocalStorage, date);
 
       expect(streak.currentCount).toBe(2);
@@ -104,7 +104,7 @@ describe("Streak Counter", () => {
       expect(streak.currentCount).toBe(2);
     });
     it("should reset if not consecutive days", () => {
-      const date = new Date("12/12/2021");
+      const date = new Date("12/13/2021");
       const streak = streakCounter(mockLocalStorage, date);
 
       expect(streak.currentCount).toBe(2);
@@ -141,7 +141,7 @@ describe("Streak Counter", () => {
       const dateUpdated = new Date("12/13/2021");
       const streakUpdated = streakCounter(mockLocalStorage, dateUpdated);
 
-      expect(streakUpdated.currentCount).toBe(1);
+      expect(streakUpdated.currentCount).toBe(2);
     });
   });
 });
