@@ -12,7 +12,6 @@ function shouldIncrementOrRestStreakCount(
   lastLoginDate: string
 ): "increment" | "reset" | "none" {
   // Get the current date as a string, minus the date from lastLoginDate
-  // split the results of lastLoginDate and take just the date
   const difference = currentDate.getDate() - new Date(lastLoginDate).getDate();
 
   // Same day login, do nothing
