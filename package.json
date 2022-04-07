@@ -1,7 +1,7 @@
 {
   "name": "@petercr/the-streaks",
   "author": "Peter Cruckshank <petecruckshank@gmail.com>",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A streak counter for the browser inspired by Doulingo's style",
  
   "license": "MIT",
