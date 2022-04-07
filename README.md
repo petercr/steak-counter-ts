@@ -1,4 +1,7 @@
-# steak-counter-ts
+# Welcome to The Streaks 🎉
+
+![Streaks-GitHub-Hero](https://user-images.githubusercontent.com/26460352/162288480-e299e5ec-40e8-45fc-8ede-141e89217c82.png)
+
 
 This is a basic streak counter - inspired by Duolingo's style - written in TypeScript and meant for the browser (uses `localStorage`).
 
